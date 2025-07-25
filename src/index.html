@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoulSync - Find Your Perfect Match</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+<body>
+    <style>
+.bx-menu{
+    display: none;
+}
+.sm-nav{
+    color: white;
+}
+@media (max-width: 500px) {
+    .main-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .section {
+        padding: 20px;
+    }
+    
+    .chat-container {
+        flex-direction: column;
+        height: auto;
+    }
+    
+    .chat-list {
+        width: 100%;
+        height: 200px;
+    }
+
+    .p {
+        visibility: visible;
+        padding-bottom: 12px;
+        font-size: 1.2rem;
+        color: #131212;
+    }
+
+    .a {
+        padding: 12px 1rem;
+    }
+    .nav-btn{
+    display: none;
+}
+    .h2 {
+        margin-bottom: 15px;
+        text-align: center;
+    }
+.bx-menu{
+    display: block;
+    color: black;
+    font-size: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    text-align: end;
+    justify-items: end;
+    position: fixed;
+    right: 0;
+    top: 0;
+}
+.sm-nav{
+    color: white;
+    font-weight: 700;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.offcanvas-top{
+    background: linear-gradient(135deg, brown, black);
+    display: flex;
+}
+li{
+    list-style: none;
+    color: black;
+     border-color: black;
+    border-left: 5px;
+    border-right: 5px;
+    font-size: 20px;
+}
+.sm-nav:hover{
+    list-style: none;
+    color: brown;
+     border-color: black;
+    border-left: 5px;
+    border-right: 5px;
+}
+.sm-nav:hover{
+    cursor: pointer;
+}
+.offcanvas-title{
+    color: white;
+    font-size: 35px;
+    font-weight: 500;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.btn-close{
+    color: white;
+    border: 4px solid white;
+}
+}
+    </style>
+    <div class="container-control">
+    <div class="header">
+        <li class="bx bx-menu respon" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop"></li>
+
+<div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasTopLabel">SoulSync</h5>
+    <button  class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body" id="offcanvas-body">
+    <li class="sm-nav" onclick="showSection('discover')">🔥<br> Discover</li>
+            <li class="sm-nav" onclick="showSection('matches')">💖<br> Matches</li>
+            <li class="sm-nav" onclick="showSection('compatibility')">🧠<br> Compatibility</li>
+            <li class="sm-nav" onclick="showSection('search')">🔍<br> Advanced Search</li>
+            <li class="sm-nav" onclick="showSection('chat')">💬<br> Chat</li>
+            <li class="sm-nav" onclick="showSection('profile')">👤<br> Profile</li>
+  </div>
+</div>
+            <h1 class="logo">SoulSync</h1>
+            <p class="p">(It's more preferable to use system)</p>
+            <p class="tagline">Where Hearts Meet, Minds Connect, and Love Begins</p>
+        </div>
+
+        <div class="main-nav">
+            <button class="nav-btn active" onclick="showSection('discover')">🔥 Discover</button>
+            <button class="nav-btn" onclick="showSection('matches')">💖 Matches</button>
+            <button class="nav-btn" onclick="showSection('compatibility')">🧠 Compatibility</button>
+            <button class="nav-btn" onclick="showSection('search')">🔍 Advanced Search</button>
+            <button class="nav-btn" onclick="showSection('chat')">💬 Chat</button>
+            <button class="nav-btn" onclick="showSection('profile')">👤 Profile</button>
+    </div>
+
+        <div class="main-content">
+            <!-- Discover Section -->
+            <div id="discover" class="section active">
+                <h2 class="h2">Discover Your Perfect Match</h2>
+                <div class="swipe-container">
+                    <div class="profile-card" id="currentCard">
+                        <div class="profile-pic">😊</div>
+                        <div class="profile-name">Alex Johnson</div>
+                        <div class="profile-age">28 years old</div>
+                        <div class="profile-bio">Adventure seeker, coffee enthusiast, and dog lover. Looking for someone to explore the world with!</div>
+                        <a class="a active" href="#" onclick="showSection('chat')">Start Chat</a>
+                    </div>
+
+                </div>
+                <div class="swipe-buttons">
+                    <button class="swipe-btn reject-btn" onclick="swipeProfile('reject')">❌</button>
+                    <button class="swipe-btn super-like-btn" onclick="swipeProfile('like')">👍</button>
+                    <button class="swipe-btn like-btn" onclick="swipeProfile('superlike')">❤️</button>
+                </div>
+            </div>
+
+            <!-- Matches Section -->
+            <div id="matches" class="section">
+                <h2>Your Matches</h2>
+                <div class="matches-grid">
+                    <div class="match-card">
+                        <div class="profile-pic">🌟</div>
+                        <h3>Rumaizoh</h3>
+                        <p>95% Match • 2 miles away</p>
+                        <p>Mutual interests: Photography, Hiking</p>
+                    </div>
+                    <div class="match-card">
+                        <div class="profile-pic">🎨</div>
+                        <h3>Halimah</h3>
+                        <p>89% Match • 5 miles away</p>
+                        <p>Mutual interests: Art, Music</p>
+                    </div>
+                    <div class="match-card">
+                        <div class="profile-pic">📚</div>
+                        <h3>Maryam</h3>
+                        <p>92% Match • 3 miles away</p>
+                        <p>Mutual interests: Reading, Travel</p>
+                    </div>
+                    <div class="match-card">
+                        <div class="profile-pic">🏋️</div>
+                        <h3>Muhsinah</h3>
+                        <p>87% Match • 7 miles away</p>
+                        <p>Mutual interests: Fitness, Cooking</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Compatibility Section -->
+            <div id="compatibility" class="section">
+                <h2>Compatibility Analysis</h2>
+                <div class="compatibility-section">
+                    <div class="compatibility-card">
+                        <div class="compatibility-score">95%</div>
+                        <h3>Sarah Chen</h3>
+                        <ul class="traits-list">
+                            <li>✅ Shared Values: Family, Adventure</li>
+                            <li>✅ Lifestyle Compatibility: Active, Social</li>
+                            <li>✅ Communication Style: Direct, Honest</li>
+                            <li>⚠️ Different: Career Focus vs Work-Life Balance</li>
+                        </ul>
+                    </div>
+                    <div class="compatibility-card">
+                        <div class="compatibility-score">89%</div>
+                        <h3>Michael Torres</h3>
+                        <ul class="traits-list">
+                            <li>✅ Shared Interests: Creative Arts, Culture</li>
+                            <li>✅ Personality: Both Introverted, Thoughtful</li>
+                            <li>⚠️ Different: Morning vs Night Person</li>
+                            <li>⚠️ Different: City vs Suburb Preference</li>
+                        </ul>
+                    </div>
+                    <div class="compatibility-card">
+                        <div class="compatibility-score">89%</div>
+                        <h3>Michael Torres</h3>
+                        <ul class="traits-list">
+                            <li>✅ Shared Interests: Creative Arts, Culture</li>
+                            <li>⚠️ Different: Morning vs Night Person</li>
+                            <li>✅ Personality: Both Introverted, Thoughtful</li>
+                            <li>⚠️ Different: City vs Suburb Preference</li>
+                        </ul>
+                    </div>
+                    <div class="compatibility-card">
+                        <div class="compatibility-score">89%</div>
+                        <h3>Michael Torres</h3>
+                        <ul class="traits-list">
+                            <li>✅ Shared Interests: Creative Arts, Culture</li>
+                            <li>⚠️ Different: Morning vs Night Person</li>
+                            <li>⚠️ Different: City vs Suburb Preference</li>
+                            <li>✅ Personality: Both Introverted, Thoughtful</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advanced Search Section -->
+            <div id="search" class="section">
+                <h2>Advanced Search</h2>
+                <div class="search-form">
+                    <div class="form-group">
+                        <label>Age Range</label>
+                        <input type="range" min="18" max="65" value="30" oninput="updateAgeDisplay(this.value)">
+                        <span id="ageDisplay">25-35</span>
+                    </div>
+                    <div class="form-group">
+                        <label>Location (miles)</label>
+                        <select>
+                            <option>Within 5 miles</option>
+                            <option>Within 10 miles</option>
+                            <option>Within 25 miles</option>
+                            <option>Within 50 miles</option>
+                            <option>Anywhere</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Education</label>
+                        <select>
+                            <option>Any</option>
+                            <option>High School</option>
+                            <option>College</option>
+                            <option>Graduate Degree</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Interests</label>
+                        <input type="text" placeholder="e.g., hiking, cooking, music">
+                    </div>
+                    <div class="form-group">
+                        <label>Relationship Type</label>
+                        <select>
+                            <option>Serious Relationship</option>
+                            <option>Casual Dating</option>
+                            <option>Friendship</option>
+                            <option>Professional Networking</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Lifestyle</label>
+                        <select>
+                            <option>Any</option>
+                            <option>Active/Outdoorsy</option>
+                            <option>Homebody</option>
+                            <option>Social Butterfly</option>
+                            <option>Career Focused</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="search-btn">Search Matches</button>
+            </div>
+
+            <!-- Chat Section -->
+            <div id="chat" id="#chat" class="section">
+                <h2>Messages</h2>
+                <div class="chat-container">
+                    <div class="chat-list">
+                        <div class="chat-item active">
+                            <strong>Sarah Chen</strong>
+                            <p>Hey! Love your travel photos...</p>
+                            <small>2 hours ago</small>
+                        </div>
+                        <div class="chat-item">
+                            <strong>Michael Torres</strong>
+                            <p>That art gallery was amazing!</p>
+                            <small>1 day ago</small>
+                        </div>
+                        <div class="chat-item">
+                            <strong>Emma Wilson</strong>
+                            <p>Any book recommendations?</p>
+                            <small>3 days ago</small>
+                        </div>
+                    </div>
+                    <div class="chat-area">
+                        <div class="chat-messages" id="chatMessages">
+                            <div class="message received">Hey! Love your travel photos from Japan. I've always wanted to visit there!</div>
+                            <div class="message sent">Thank you! It was incredible. The cherry blossoms were in full bloom. Have you traveled much in Asia?</div>
+                            <div class="message received">Not yet, but it's definitely on my bucket list. What was your favorite part of the trip?</div>
+                            <div class="message sent">Definitely Kyoto! The temples and traditional culture were amazing. We should chat more about travel sometime!</div>
+                        </div>
+                        <div class="chat-input">
+                            <input type="text" placeholder="Type your message..." id="messageInput" onkeypress="handleEnter(event)">
+                            <button class="send-btn" onclick="sendMessage()">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Section -->
+            <div id="profile" class="section">
+                <h2>Your Profile Dashboard</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">247</div>
+                        <div>Profile Views</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">89</div>
+                        <div>Likes Received</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">23</div>
+                        <div>Matches</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">12</div>
+                        <div>Active Conversations</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">16</div>
+                        <div>Liked profiles</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">10</div>
+                        <div>Recommended matches</div>
+                    </div>
+                </div>
+
+                <div class="premium-features">
+                    <h3>🌟 Upgrade to Premium</h3>
+                    <p>Unlock advanced features: See who liked you, unlimited swipes, boost your profile, and advanced filters!</p>
+                    <a href="#"><button class="premium-btn">Upgrade Now - $9.99/month</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+</body>
+</html>
